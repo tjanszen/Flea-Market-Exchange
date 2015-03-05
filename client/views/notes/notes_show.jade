@@ -1,0 +1,10 @@
+h1: small Show
+
+h3 {{note.title}}
+p {{note.body}}
+ul
+  li(ng-repeat='url in note.urls track by $index')
+    a(ng-href='{{url}}') {{url}}
+ul
+  li(ng-repeat='tag in note.tags track by $index')
+    a(ui-sref='notes.list({tag:tag})') {{tag}}

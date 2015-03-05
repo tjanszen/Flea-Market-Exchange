@@ -1,0 +1,22 @@
+h1: small New
+
+.row
+  .col-xs-4
+    form
+      .form-group
+        label(for='title') Title
+        input#title.form-control(type='text', name='title', autofocus=true, ng-model='note.title')
+      .form-group
+        label(for='body') Body
+        textarea#body.form-control(name='body', rows='3', ng-model='note.body')
+      .form-group
+        label(for='tags') Tags
+        input#tags.form-control(type='text', name='tags', ng-model='note.tags')
+      .form-group
+        button.btn.btn-success.btn-xs(ng-click='add()') Add Url
+      .form-group(ng-repeat='t in temp track by $index')
+        label Url
+        input.form-control(type='url', ng-model='note.urls[$index]')
+      .form-group
+        button.btn.btn-default(ng-click='create(note)') Create Note
+  .col-xs-8

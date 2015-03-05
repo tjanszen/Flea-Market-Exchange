@@ -1,0 +1,5 @@
+h1: small List
+
+ul
+  li(ng-repeat='note in notes | filter: tagFilter')
+    a(ui-sref='notes.show({noteId:note._id})') {{note.title}}
