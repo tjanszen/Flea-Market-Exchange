@@ -7,5 +7,6 @@ module.exports = [
   {method: 'get', path: '/status', config: require('../routes/users/status')},
   {method: 'get', path: '/logout', config: require('../routes/users/logout')},
 
-  {method: 'post', path: '/items', config: require('../routes/items/create')}
+  {method: 'post', path: '/items', config: require('../routes/items/create')},
+  {method: 'get', path: '/items', config: require('../routes/items/index')}
 ];

@@ -3,3 +3,9 @@ h1 Dashboard
 div {{user.name}}
 img(src='{{user.picture}}')
 div {{user.email}}
+ul
+  #userItems(ng-repeat='item in userItems | filter: user._id')
+    li {{item.name}}
+    li {{item.year}}
+    li {{item.cost}}
+    li: img.user-item-img(src='{{item.image}}')

@@ -1,12 +1,20 @@
 'use strict';
 
 angular.module('eddie')
-  .controller('DashCtrl', ['$scope', '$rootScope', 'User', 'Item', '$state', '$location', function($scope, $rootScope, User, Item, $state, $location) {
+  .controller('DashCtrl', ['$scope', '$rootScope', 'User', 'Item', '$state', '$location', '$http', function($scope, $rootScope, User, Item, $state, $location, $http) {
+    // console.log($rootScope);
+    $http.get('/items').success(function(data) {
+      // _.filter(data.items, )
+      // $scope.nonUserItems =
+      $scope.userItems = data.items;
+    }).error(function(data) {
+      console.log('USER ID GET FUCKED', data);
+    });
+
+    // $http.get('/')
 
     $scope.addItem = function() {
-      alert('yo');
       $state.go('dashboard.new');
-      // $location.path('/new');
     };
 
     $scope.submit = function(item) {
