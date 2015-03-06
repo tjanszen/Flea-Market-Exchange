@@ -6,7 +6,7 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(ui-sref='home') Eddie Exchange
+      a.navbar-brand(ui-sref='dashboard.list') Eddie Exchange
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right(ng-hide='email')
         li: a(ui-sref='register'): i.fa.fa-users &nbsp; Register
@@ -16,4 +16,4 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
         li: a(href="#") {{email}}
         li: a(href='#', ng-click='logout()') Logout
       ul.nav.navbar-nav.navbar-right
-        li: a(ui-sref='home'): i.fa.fa-home &nbsp; Home
+        li: a(ui-sref='dashboard.list'): i.fa.fa-home &nbsp; Home

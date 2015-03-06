@@ -1,0 +1,20 @@
+h3 Add New
+
+form
+  .form-group
+    label Name
+    input(type='text', name='name', ng-model="item.name", autofocus, required)
+  .form-group
+    label Year
+    input(type='text', name='year', ng-model="item.year", required)
+  .form-group
+    label cost
+    input(type='text', name='cost', ng-model="item.cost", required)
+  .form-group
+    label Image
+    input(type='url', name='image' ng-model="item.image", required, placeholder="http://..." )
+  .form-group
+    label Tags
+    input(type='text', name='tags', ng-model="item.tags", required)
+  .form-group
+    button.btn.btn-default(ng-click='submit(item)') Add

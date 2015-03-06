@@ -19,7 +19,7 @@ angular.module('eddie')
           $rootScope.user = data.data.user;
           console.log($rootScope.user);
           $rootScope.email = user.email;
-          $state.go('home');
+          $state.go('dashboard.list');
         },
         function() {
           user.email = user.password = "";

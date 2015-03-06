@@ -7,12 +7,6 @@ angular.module('eddie', ['ui.router'])
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  .state('home', {
-    url:'/',
-    templateUrl: 'views/general/home.html',
-    controller: 'HomeCtrl'
-  })
-
   .state('login', {
     url: '/login',
     templateUrl: 'views/users/users.html',
@@ -23,7 +17,40 @@ angular.module('eddie', ['ui.router'])
     url: '/register',
     templateUrl: 'views/users/users.html',
     controller: 'UserCtrl'
+  })
+
+  .state('dashboard', {
+    url:'/dashboard',
+    templateUrl: 'views/dashboard/dashboard.html',
+    abstract: true
+  })
+
+  .state('dashboard.new', {
+    views: {
+      'main': {
+        templateUrl: 'views/dashboard/dashboard_new.html',
+        controller: 'DashCtrl'
+      },
+      'user': {
+        templateUrl: 'views/dashboard/dashboard_user.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })
+
+  .state('dashboard.list', {
+    views: {
+      'main': {
+        templateUrl: 'views/dashboard/dashboard_list.html',
+        controller: 'DashCtrl'
+      },
+      'user': {
+        templateUrl: 'views/dashboard/dashboard_user.html',
+        controller: 'DashCtrl'
+      }
+    }
   });
+
 }])
 
 .run(['$rootScope', 'User', function($rootScope, User) {
