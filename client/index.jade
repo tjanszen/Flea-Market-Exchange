@@ -1,5 +1,5 @@
 doctype html
-html(lang='en', ng-app='angular-notes')
+html(lang='en', ng-app='eddie')
   head
     meta(charset='utf-8')      
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -15,7 +15,7 @@ html(lang='en', ng-app='angular-notes')
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
   body
     include ./views/nav/nav
-
+    
     .container-fluid
       .row
         .col-xs-12
@@ -29,8 +29,7 @@ html(lang='en', ng-app='angular-notes')
     script(src='/vendor/bootstrap/dist/js/bootstrap.min.js')
 
     script(src='/index.js')
-    script(src='/views/users/users.js')
-    script(src='/views/nav/nav.js')
-    script(src='/views/notes/notes.js')
     script(src='/models/user.js')
-    script(src='/models/note.js')
+    script(src='/views/users/users.js')
+    script(src='/views/general/home.js')
+    script(src='/views/nav/nav.js')

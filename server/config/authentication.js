@@ -2,6 +2,6 @@
 
 module.exports = {
   password: 'ren and stimpy',
-  cookie: 'hapi-cookie',
+  cookie: 'doggie-cookie',
   isSecure: false
 };

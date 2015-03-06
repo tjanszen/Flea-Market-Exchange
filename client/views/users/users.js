@@ -1,26 +1,28 @@
 'use strict';
 
-angular.module('angular-notes')
-  .controller('UsersCtrl', ['$scope', '$rootScope', '$state', 'User', function($scope, $rootScope, $state, User){
-    $scope.name = _.capitalize($state.current.name);
+angular.module('eddie')
+  .controller('UserCtrl', ['$scope', '$rootScope', '$state', 'User', function($scope, $rootScope, $state, User) {
+    $scope.url = _.capitalize($state.current.name);
 
-    $scope.submit = function(user){
-      if($scope.name === 'Register'){
-        if((user.password1 === user.password2) && (user.email)){
-          User.register({email:user.email, password:user.password1}).then(function(){
-            $state.go('login');
-          }, function(){
-            user.email = user.password1 = user.password2 = '';
-          });
-        }else{
-          user.password1 = user.password2 = '';
-        }
-      }else{
-        User.login(user).then(function(response){
-          $rootScope.email = response.data.email;
+
+    $scope.submit = function(user) {
+      if ($scope.url === "Register") {
+        console.log('controller user: ', user);
+        User.register({name: user.name, email: user.email, password: user.password1, picture: user.picture}).then(function(data) {
+          $state.go('login');
+        },
+        function() {
+          user.name = user.email = user.password1 = user.password2 = user.picture = "";
+        });
+      } else {
+        User.login({email: user.email, password: user.password}).then(function(data) {
+          $rootScope.user = data.data.user;
+          console.log($rootScope.user);
+          $rootScope.email = user.email;
           $state.go('home');
-        }, function(){
-          user.email = user.password = '';
+        },
+        function() {
+          user.email = user.password = "";
         });
       }
     };

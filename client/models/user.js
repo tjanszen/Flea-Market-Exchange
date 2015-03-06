@@ -1,23 +1,26 @@
 'use strict';
 
-angular.module('angular-notes')
-  .factory('User', ['$http', function($http){
+angular.module('eddie')
 
-    function register(user){
-      return $http.post('/register', user);
-    }
+.factory('User', ['$http', function($http) {
 
-    function login(user){
-      return $http.post('/login', user);
-    }
+  function register(user) {
+    console.log('factory user: ', user);
+    return $http.post('/user', user);
+  }
 
-    function status(){
-      return $http.get('/status');
-    }
+  function login(user) {
+    return $http.post('/login', user);
+  }
 
-    function logout(){
-      return $http.delete('/logout');
-    }
+  function status() {
+    return $http.get('/status');
+  }
 
-    return {register:register, login:login, status:status, logout:logout};
-  }]);
+  function logout() {
+    return $http.get('/logout');
+  }
+
+  return { register: register, login: login, status: status, logout: logout };
+
+}]);

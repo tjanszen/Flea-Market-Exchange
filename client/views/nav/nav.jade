@@ -6,16 +6,14 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(ui-sref='home') Angular Notes
+      a.navbar-brand(ui-sref='home') Eddie Exchange
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right(ng-hide='email')
         li: a(ui-sref='register'): i.fa.fa-users &nbsp; Register
         li: a(ui-sref='login'): i.fa.fa-key &nbsp; Login
       ul.nav.navbar-nav.navbar-right(ng-show='email')
-        li: a(ui-sref='notes.new'): i.fa.fa-pencil &nbsp; New Note
-        li: a(ui-sref='notes.list'): i.fa.fa-list &nbsp; Notes
-        li: a(href='#', ng-click='logout()') {{email}}
+        li: a(href="#") History
+        li: a(href="#") {{email}}
+        li: a(href='#', ng-click='logout()') Logout
       ul.nav.navbar-nav.navbar-right
         li: a(ui-sref='home'): i.fa.fa-home &nbsp; Home
-        li: a(ui-sref='faq'): i.fa.fa-beer &nbsp; Faq
-        li: a(ui-sref='contact'): i.fa.fa-fire &nbsp; Contact
