@@ -1,11 +1,22 @@
+.row.user-profile
+  .col-xs-12.text-center.user-profile-img-col
+    img.user-progile-img(src='{{user.picture}}')
+  .col.xs-12.text-center
+    #user-name {{user.name}}
+    #user-email {{user.email}}
+.row.user-items-row(ng-repeat='item in userItems | filter: user._id')
+  .col-xs-4
+    img.user-item-img(src='{{item.image}}')
+  .col-xs-8
+    ul 
+      li {{item.name}}
+      li {{item.year}}
+      li {{item.cost}}
+
 button.btn.btn-default(type='button', ng-click='addItem()'): i.fa.fa-plus
-h1 Dashboard
-div {{user.name}}
-img(src='{{user.picture}}')
-div {{user.email}}
-ul
-  #userItems(ng-repeat='item in userItems | filter: user._id')
-    li {{item.name}}
-    li {{item.year}}
-    li {{item.cost}}
-    li: img.user-item-img(src='{{item.image}}')
+//- ul
+//-   #userItems(ng-repeat='item in userItems | filter: user._id')
+//-     li {{item.name}}
+//-     li {{item.year}}
+//-     li {{item.cost}}
+//-     li: img.user-item-img(src='{{item.image}}')
