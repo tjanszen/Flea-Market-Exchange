@@ -12,8 +12,8 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
         li: a(ui-sref='register'): i.fa.fa-users &nbsp; Register
         li: a(ui-sref='login'): i.fa.fa-key &nbsp; Login
       ul.nav.navbar-nav.navbar-right(ng-show='email')
-        li: a(href="#") History
-        li: a(href="#") {{email}}
+        //- li: a(href="#") History
         li: a(href='#', ng-click='logout()') Logout
+        li: a(href="#") {{user.name}}
       ul.nav.navbar-nav.navbar-right
         li: a(ui-sref='dashboard.list'): i.fa.fa-home &nbsp; Home

@@ -3,10 +3,9 @@
 var Joi = require('joi');
 var User = require('../../models/user');
 
+console.log('create......');
+
 module.exports = {
-  auth: {
-    mode: 'try'
-  },
   validate: {
     payload: {
       name: Joi.string().required(),
@@ -15,14 +14,13 @@ module.exports = {
       picture: Joi.string().required()
     }
   },
+  auth: false,
   handler: function(request, reply) {
-    // var user = new User(request.payload);
-    console.log(request);
     User.register(request.payload, function(err) {
       if (err) {
         reply().code(400);
       } else {
-        reply().code(200);
+        reply();
       }
     });
   }

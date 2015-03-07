@@ -10,7 +10,7 @@ var itemSchema = mongoose.Schema({
   image: {type: String, required: true},
   canSwap: {type: Boolean, default: true, required: true},
   tags: {type: [String], required: true},
-  pending: {type: Boolean, default: false},
+  pending: {type: [mongoose.Schema.ObjectId], ref: 'Item' },
   swapped: {type: Boolean, default: false},
   userId: {type: mongoose.Schema.ObjectId, ref: 'User', required: true}
 });

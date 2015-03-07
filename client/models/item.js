@@ -7,5 +7,9 @@ angular.module('eddie')
       return $http.post('/items', item);
     }
 
-    return {create: create};
+    function offerSwap(swapArray) {
+      return $http.post('/swaps', swapArray);
+    }
+
+    return {create: create, offerSwap: offerSwap};
   }]);

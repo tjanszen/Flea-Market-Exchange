@@ -1,7 +1,15 @@
 h1 Items for Fleas
 ul
-  #userItems(ng-repeat='item in userItems | filter: "!"+user._id')
-    li {{item.name}}
-    li {{item.year}}
-    li {{item.cost}}
-    li: img.user-item-img(src='{{item.image}}')
+  #userItems(ng-repeat='item1 in userItems | filter: "!"+user._id')
+    li {{item1.name}}
+    li {{item1.year}}
+    li {{item1.cost}}
+    li: img.user-item-img(src='{{item1.image}}')
+    li
+      select.form-control(name='swapItem', ng-model='selectedSwap' ng-change='swapChosen(selectedSwap, item1._id)')
+        option(value='') Swap Item
+        option(value='{{item2._id}}' ng-repeat='item2 in userItems | filter: user._id') {{item2.name}}
+
+button.btn.btn-defualt(type='button' ng-click='swapItems()') Swap Items!
+        
+  

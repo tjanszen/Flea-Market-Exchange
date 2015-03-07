@@ -4,7 +4,7 @@ angular.module('eddie', ['ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/dashboard/list');
 
   $stateProvider
   .state('login', {
@@ -26,6 +26,7 @@ angular.module('eddie', ['ui.router'])
   })
 
   .state('dashboard.new', {
+    url: '/new',
     views: {
       'main': {
         templateUrl: 'views/dashboard/dashboard_new.html',
@@ -39,6 +40,7 @@ angular.module('eddie', ['ui.router'])
   })
 
   .state('dashboard.list', {
+    url: '/list',
     views: {
       'main': {
         templateUrl: 'views/dashboard/dashboard_list.html',
