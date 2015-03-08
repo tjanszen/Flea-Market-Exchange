@@ -99,6 +99,13 @@ angular.module('eddie')
       });
     };
 
-
+    $scope.canSwap = function(item) {
+      Item.switchSwap({item: item}).then(function(data) {
+        item.canSwap = !item.canSwap;
+      },
+      function() {
+        console.log('canSwap switched failed');
+      });
+    };
 
 }]);

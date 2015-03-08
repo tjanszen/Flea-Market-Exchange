@@ -1,6 +1,6 @@
 h1 Items for Fleas
 .row
-  ul.itemCards.col-md-3(ng-repeat='item1 in userItems | filter: "!"+user._id')
+  ul.itemCards.col-md-3(ng-repeat='item1 in userItems | filter: { userId: "!"+user._id, canSwap: true}')
     li: img.user-item-img(src='{{item1.image}}')
     li.itemName {{item1.name}}
     li Year: {{item1.year}}

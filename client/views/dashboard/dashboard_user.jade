@@ -15,4 +15,8 @@ button.btn.btn-default(type='button', ng-click='addItem()'): i.fa.fa-plus
       li.itemName {{item.name}}
       li Year: {{item.year}}
       li ${{item.cost}}
+    .toggle-canSwap
+      button.btn.btn-default(ng-click='canSwap(item)', ng-show='item.canSwap') Unlocked
+      button.btn.btn-default(ng-click='canSwap(item)', ng-show='!item.canSwap') Locked
+  
     button.btn.btn-default(ng-show='item.pending.length > 0', ng-click='showPendingTrades(item)') Pending Trades
