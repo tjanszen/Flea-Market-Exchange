@@ -16,7 +16,7 @@ module.exports = {
 
         item.save(function(err) {
           if(err){
-            console.log('err', err)
+            console.log('err', err);
           } else {
             User.findById(item.userId, function(err, user) {
               sender = user;
@@ -25,7 +25,7 @@ module.exports = {
                 item.pending.push(o.yourItem);
                 item.save(function(err){
                   if(err){
-                    console.log('ERR')
+                    console.log('ERR');
                   } else {
                     User.findById(item.userId, function(err, user) {
                       receiver = user;
@@ -35,16 +35,17 @@ module.exports = {
                           message: {
                               to: [{email: receiver.email, name: receiver.name}],
                               from_email: sender.email,
-                              subject: "Swapping Time!",
-                              text: "Check your account to approve swamp!"
+                              subject: 'Swapping Time!',
+                              text: 'Check your account to approve swamp!'
                           }
                       }, function(error, response)
                       {
                           //uh oh, there was an error
-                          if (error) console.log( JSON.stringify(error) );
-
-                          //everything's good, lets see what mandrill said
-                          else console.log(response);
+                          if (error) {
+                            console.log( JSON.stringify(error) );
+                          } else{   //everything's good, lets see what mandrill said
+                            console.log(response);
+                          }
                       });
                     });
                   }

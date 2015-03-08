@@ -3,7 +3,6 @@
 var Joi = require('joi');
 var User = require('../../models/user');
 
-console.log('create......');
 
 module.exports = {
   validate: {

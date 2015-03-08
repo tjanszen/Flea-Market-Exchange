@@ -1,0 +1,16 @@
+//- h1 Approve Page
+
+.row
+  ul
+    li: img.user-item-img(src='{{userPendingItem.image}}')
+    li.itemName {{userPendingItem.name}}
+    li Year: {{userPendingItem.year}}
+    li ${{userPendingItem.cost}}
+.row
+  ul.itemCards.col-md-3(ng-repeat='item in pendingArray')
+    li: img.user-item-img(src='{{item.image}}')
+    li.itemName {{item.name}}
+    li Year: {{item.year}}
+    li ${{item.cost}}
+    li: button.btn.btn-default(ng-click='confirmTrade(item)') confirm Trade
+  

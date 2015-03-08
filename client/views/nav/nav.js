@@ -5,6 +5,7 @@ angular.module('eddie')
     $scope.logout = function(){
       User.logout().then(function(){
         delete $rootScope.email;
+        delete $rootScope.user;
         $state.go('login');
       },
       function() {

@@ -1,0 +1,54 @@
+[
+  {
+    "_id" : {"$oid":"0000000000000000000000a1"},
+    "name" : "Ball 1",
+    "year" : "2000",
+    "cost" : "25",
+    "image" : "http://www.petco.com/assets/product_images/6/660048170013C.jpg",
+    "userId" : {"$oid" : "54fa7464745fd69eeec684e8"},
+    "tags" : [
+        "tag1"
+    ],
+    "pending" : [],
+    "swapped" : false
+  },
+  {
+    "_id" : {"$oid":"0000000000000000000000a2"},
+    "name" : "Ball 2",
+    "year" : "2001",
+    "cost" : "30",
+    "image" : "http://www.petmountain.com/photos/product/giant/114420S503705/ball-toys-for-dogs/giggler-bouncing-dog-toy-that-laughs.jpg",
+    "userId" : {"$oid" : "54fa7464745fd69eeec684e8"},
+    "tags" : [
+        "tag1"
+    ],
+    "pending" : [],
+    "swapped" : false
+  },
+  {
+    "_id" : {"$oid":"0000000000000000000000a3"},
+    "name" : "Ball 3",
+    "year" : "2002",
+    "cost" : "35",
+    "image" : "http://www.doggietoys.net/products/VT585.jpg",
+    "userId" : {"$oid" : "54fa7432745fd69eeec684e7"},
+    "tags" : [
+        "tag2"
+    ],
+    "pending" : [],
+    "swapped" : false
+  },
+  {
+    "_id" : {"$oid":"0000000000000000000000a4"},
+    "name" : "Ball 4",
+    "year" : "2003",
+    "cost" : "36",
+    "image" : "http://www.jwpet.com/images/dogholdet_rol.jpg",
+    "userId" : {"$oid" : "54fa7432745fd69eeec684e7"},
+    "tags" : [
+        "tag2"
+    ],
+    "pending" : [],
+    "swapped" : false
+  }
+]

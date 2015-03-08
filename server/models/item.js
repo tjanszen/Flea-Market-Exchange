@@ -8,9 +8,8 @@ var itemSchema = mongoose.Schema({
   year: {type: String, required: true},
   cost: {type: Number, required: true},
   image: {type: String, required: true},
-  canSwap: {type: Boolean, default: true, required: true},
   tags: {type: [String], required: true},
-  pending: {type: [mongoose.Schema.ObjectId], ref: 'Item' },
+  pending: {type: [mongoose.Schema.ObjectId], ref: 'Item', default: [] },
   swapped: {type: Boolean, default: false},
   userId: {type: mongoose.Schema.ObjectId, ref: 'User', required: true}
 });

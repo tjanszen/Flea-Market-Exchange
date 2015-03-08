@@ -11,5 +11,9 @@ angular.module('eddie')
       return $http.post('/swaps', swapArray);
     }
 
-    return {create: create, offerSwap: offerSwap};
+    function makeTrade(trade) {
+      return $http.post('/trade', trade);
+    }
+
+    return {create: create, offerSwap: offerSwap, makeTrade: makeTrade};
   }]);

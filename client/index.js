@@ -51,6 +51,20 @@ angular.module('eddie', ['ui.router'])
         controller: 'DashCtrl'
       }
     }
+  })
+
+  .state('dashboard.approve', {
+    url: '/approve',
+    views: {
+      'main': {
+        templateUrl: 'views/dashboard/dashboard_approve.html',
+        controller: 'DashCtrl'
+      },
+      'user': {
+        templateUrl: 'views/dashboard/dashboard_user.html',
+        controller: 'DashCtrl'
+      }
+    },
   });
 
 }])

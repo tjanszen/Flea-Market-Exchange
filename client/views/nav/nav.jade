@@ -16,4 +16,4 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
         li: a(href='#', ng-click='logout()') Logout
         li: a(href="#") {{user.name}}
       ul.nav.navbar-nav.navbar-right
-        li: a(ui-sref='dashboard.list'): i.fa.fa-home &nbsp; Home
+        li: a(ui-sref='dashboard.list', ng-show='user'): i.fa.fa-home &nbsp; Home

@@ -3,13 +3,33 @@
 angular.module('eddie')
   .controller('UserCtrl', ['$scope', '$rootScope', '$state', 'User', function($scope, $rootScope, $state, User) {
     $scope.url = _.capitalize($state.current.name);
+    console.log($state.current.name);
+    console.log($scope.user);
 
+    $('form[name="email"]').text('');
+    document.getElementById('userForm').reset();
+
+    // if ($state.current.name === 'login') {
+    //   $scope.user.email = '';
+    //   $scope.user.password = '';
+    // } else if ($state.current.name === 'register') {
+    //   $scope.user.name = '';
+    //   $scope.user.email = '';
+    //   $scope.user.password1 = '';
+    //   $scope.user.password2 = '';
+    //   $scope.user.picture = '';
+    // }
 
     $scope.submit = function(user) {
       if ($scope.url === "Register") {
         console.log('controller user: ', user);
         User.register({name: user.name, email: user.email, password: user.password1, picture: user.picture}).then(function(data) {
           // user.name = user.email = user.password1 = user.password2 = user.picture = "";
+          user.name = '';
+          user.email = '';
+          user.password1 = '';
+          user.password2 = '';
+          user.picture = '';
           $state.go('login');
         },
         function() {
@@ -20,6 +40,8 @@ angular.module('eddie')
           $rootScope.user = data.data.user;
           // console.log($rootScope.user);
           $rootScope.email = user.email;
+          user.email = '';
+          user.password = '';
           // user.email = user.password = "";
           $state.go('dashboard.list');
         },
@@ -28,4 +50,6 @@ angular.module('eddie')
         });
       }
     };
+
+
   }]);

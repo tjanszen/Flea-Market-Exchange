@@ -2,20 +2,26 @@
 
 angular.module('eddie')
   .controller('DashCtrl', ['$scope', '$rootScope', 'User', 'Item', '$state', '$location', '$http', function($scope, $rootScope, User, Item, $state, $location, $http) {
-    // console.log($rootScope);
+
+    // if ($rootScope.userPendingItem)
+    //   console.log('params', $rootScope.userPendingItem);
 
     $scope.swapArray = [];
+    // $scope.userItemIds = [];
 
     $http.get('/items').success(function(data) {
-      // _.filter(data.items, )
-      // $scope.nonUserItems =
       $scope.userItems = data.items;    // USER ITEMS ARE ALL ITEMS IN THE DATABASE
-      console.log('userItems', $scope.userItems);
+      // $scope.userItems.forEach(function(dbItem) {
+      //   if (dbItem.userId === $rootScope.user._id) {
+      //     $scope.userItemIds.push(dbItem._id);
+      //   }
+      // });
+      // console.log('IDSSSSSS', $scope.userItemIds);
+      // console.log($scope.userItems);
     }).error(function(data) {
       console.log('USER ID GET FUCKED', data);
     });
 
-    // $http.get('/')
 
     $scope.addItem = function() {
       $state.go('dashboard.new');
@@ -45,8 +51,9 @@ angular.module('eddie')
       // if user choses default 'Swap Item' option then remove that swap from the array
       if (yourItemId === '') {
         $scope.swapArray.forEach(function(pair, index) {
-          if (otherItemId === pair.otherItem)
+          if (otherItemId === pair.otherItem) {
             $scope.swapArray.splice(index, 1);
+          }
         });
       } else {
         // check if user just changed a swapping item to one of his other items
@@ -57,9 +64,41 @@ angular.module('eddie')
           }
         });
         // if changing from no-swap on an item to offering a swap, add it to the array
-        if (!edited)
+        if (!edited) {
           $scope.swapArray.push({yourItem: yourItemId, otherItem: otherItemId});
+        }
       }
     };
+
+    $scope.showPendingTrades = function(item) {
+      // console.log('item', item);
+      $rootScope.pendingArray = [];
+      item.pending.forEach(function(pendingItemId) {
+          $scope.userItems.forEach(function(dbItem) {
+            if (pendingItemId === dbItem._id) {
+              $rootScope.pendingArray.push(dbItem);
+            }
+          });
+      });
+      // console.log($rootScope.pendingArray);
+
+      $state.go('dashboard.approve');//, {'userItem': JSON.stringify(item)});
+      $rootScope.userPendingItem = item;
+      // $scope.userItemIds.forEach(function(id) {
+      //   $('#' + id).css('background-color', 'white');
+      // });
+      // $("#" + item._id).css('background-color', 'yellow');
+    };
+
+    $scope.confirmTrade = function(item) {
+      Item.makeTrade({requestersItem: item, confirmersItem: $rootScope.userPendingItem}).then(function(data){
+        console.log(data);
+      },
+      function(){
+        console.log('ERROR CONFRIMING TRADE');
+      });
+    };
+
+
 
 }]);

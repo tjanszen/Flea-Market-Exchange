@@ -1,0 +1,22 @@
+[
+  {
+    "_id" : {"$oid" : "54fa7432745fd69eeec684e7"},
+    "name" : "Todd",
+    "email" : "toddkronenberg@gmail.com",
+    "password" : "$2a$08$h/MY1KMXLreYNXvtkQmrRuOVoG30ZAunfKjgsgEYeJvr5NbaeV1I.",
+    "picture" : "https://lh3.googleusercontent.com/-BKzV3xG92zQ/AAAAAAAAAAI/AAAAAAAAAXg/6FzUZJ1sIrI/photo.jpg",
+    "createdAt" : {"$date":1424828111020},
+    "items" : [],
+    "__v" : 0
+  },
+  {
+    "_id" : {"$oid" : "54fa7464745fd69eeec684e8"},
+    "name" : "Tommy",
+    "email" : "tommy.janszen@gmail.com",
+    "password" : "$2a$08$rlDWPlL8pJAt71djfuZSJ.k/wYz2w8XPVfbKHuIl2MU9mh5jsECkO",
+    "picture" : "http://m.c.lnkd.licdn.com/mpr/mpr/shrink_500_500/p/2/005/095/0ae/137f868.jpg",
+    "createdAt" : {"$date":1424828111020},
+    "items" : [],
+    "__v" : 0
+  }
+]

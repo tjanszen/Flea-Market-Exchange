@@ -9,5 +9,6 @@ module.exports = [
 
   {method: 'post', path: '/items', config: require('../routes/items/create')},
   {method: 'get', path: '/items', config: require('../routes/items/index')},
-  {method: 'post', path: '/swaps', config: require('../routes/items/swaps')}
+  {method: 'post', path: '/swaps', config: require('../routes/items/swaps')},
+  {method: 'post', path: '/trade', config: require('../routes/items/trade')}
 ];

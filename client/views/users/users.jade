@@ -1,7 +1,7 @@
 h1 {{url}}
 
 .col-xs-4
-  form
+  form(id='userForm')
     .form-group(ng-show='url === "Register"')
       label Name
       input(type='text', name='name', ng-model="user.name", autofocus, required)
