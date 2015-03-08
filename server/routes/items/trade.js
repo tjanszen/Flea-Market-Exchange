@@ -122,8 +122,8 @@ function sendEmail(sender, receiver) {
       message: {
           to: [{email: receiver.email, name: receiver.name}],
           from_email: sender.email,
-          subject: 'You have traded some shit',
-          text: 'Check your account to make sure it did not get fucked up'
+          subject: 'Congrats on your new trade!',
+          text: 'Congrats on your new trade. Keep on trading!'
       }
   },
   function(error, response) {

@@ -1,20 +1,32 @@
-h3 Add New
-
-form
-  .form-group
-    label Name
-    input(type='text', name='name', ng-model="item.name", autofocus, required)
-  .form-group
-    label Year
-    input(type='text', name='year', ng-model="item.year", required)
-  .form-group
-    label cost
-    input(type='text', name='cost', ng-model="item.cost", required)
-  .form-group
-    label Image
-    input(type='url', name='image' ng-model="item.image", required, placeholder="http://..." )
-  .form-group
-    label Tags
-    input(type='text', name='tags', ng-model="item.tags", required)
-  .form-group
-    button.btn.btn-default(ng-click='submit(item)') Add
+.row#new-item
+  .col-xs-offset-2.col-xs-8
+    .panel.panel-default
+      .panel-heading.text-center
+        h3 New Item
+      .panel-body
+        form#itemForm
+          fieldset
+            .row
+              .col-xs-12
+                .form-group
+                  .input-group
+                    label Name
+                    input.form-control(type='text', name='name', ng-model="item.name", autofocus, required)
+                .form-group
+                  .input-group
+                    label Year
+                    input.form-control(type='text', name='year', ng-model="item.year", required)
+                .form-group
+                  .input-group
+                    label Cost
+                    input.form-control(type='text', name='cost', ng-model="item.cost", required)
+                .form-group
+                  .input-group
+                    label Image
+                    input.form-control(type='url', name='image' ng-model="item.image", required, placeholder="http://..." )
+                .form-group
+                  .input-group
+                    label Tags
+                    input.form-control(type='text', name='tags', ng-model="item.tags", required)
+                .form-group
+                    button.btn.btn-lg.btn-primary.btn-block(ng-click='submit(item)') Add Item

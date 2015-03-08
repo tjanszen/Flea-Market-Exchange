@@ -1,16 +1,33 @@
-//- h1 Approve Page
-
-.row
-  ul
-    li: img.user-item-img(src='{{userPendingItem.image}}')
-    li.itemName {{userPendingItem.name}}
-    li Year: {{userPendingItem.year}}
-    li ${{userPendingItem.cost}}
-.row
-  ul.itemCards.col-md-3(ng-repeat='item in pendingArray')
-    li: img.user-item-img(src='{{item.image}}')
-    li.itemName {{item.name}}
-    li Year: {{item.year}}
-    li ${{item.cost}}
-    li: button.btn.btn-default(ng-click='confirmTrade(item)') confirm Trade
+.row.item-to-trade
+  .row.text-center
+    h3 Item to Trade
+  .col-xs-offset-3.col-xs-6.ind-item-cards
+    .col-xs-offset-3
+    .col-xs-9.text-center
+      .row
+        .col-xs-6
+          img.user-item-img(src='{{userPendingItem.image}}')
+        .col-xs-6.text-left
+          h4.item-title {{userPendingItem.name}}
+          h5.item-year Year: {{userPendingItem.year}}
+          h5.item-cost $ {{userPendingItem.cost}}
+          h5(ng-repeat='t in userPendingItem.tags') Tags: {{t}}
+        
+.row.offers-to-trade
+  .row.text-center
+    h3 Open Offers
+  .col-xs-6.ind-item-cards(ng-repeat='item in pendingArray')
+    .col-xs-offset-3
+    .col-xs-9
+      .row
+        .col-xs-6
+          img.user-item-img(src='{{item.image}}')
+        .col-xs-6
+          h4.item-title {{item.name}}
+          h5.item-year Year: {{item.year}}
+          h5.item-cost $ {{item.cost}}
+          h5(ng-repeat='t in item.tags') Tags: {{t}}
+          button.btn.btn-warning(ng-click='confirmTrade(item)') Confirm Trade
+      
   
+          

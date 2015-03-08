@@ -1,23 +1,21 @@
 .row.user-profile
-  .col-xs-12.text-center.user-profile-img-col
+  .row.text-center
+    h3 Welcome {{user.name}}!
+  .col-xs-6.text-center.user-profile-img-col
     img.user-profile-img(src='{{user.picture}}')
-  .col.xs-12.text-center
-    #user-name {{user.name}}
-    #user-email {{user.email}}
-    
-button.btn.btn-default(type='button', ng-click='addItem()'): i.fa.fa-plus
+  .col.xs-6.text-left
+    i.fa.fa-plus.fa-4x(type='button', ng-click='addItem()')
 
 .row.user-items-row(ng-repeat='item in userItems | filter: user._id', id='{{item._id}}')
   .col-xs-4
     img.user-item-img(src='{{item.image}}')
   .col-xs-7
-    ul 
-      li.itemName {{item.name}}
-      li Year: {{item.year}}
-      li ${{item.cost}}
+    h4.item-title {{item.name}}
+    h5.item-year Year: {{item.year}}
+    h5.item-cost $ {{item.cost}}
+    h5(ng-repeat='t in item1.tags') Tags: {{t}}
     .toggle-canSwap
-      button.btn.btn-default(ng-click='canSwap(item)', ng-show='item.canSwap') Unlocked
-      button.btn.btn-default(ng-click='canSwap(item)', ng-show='!item.canSwap') Locked
-    button.btn.btn-default(ng-show='item.pending.length > 0', ng-click='showPendingTrades(item)') Pending 
-    Trades
-    button.btn.btn-danger(ng-click='deleteItem(item)') x
+      i.fa.fa-unlock.fa-2x(ng-click='canSwap(item)', ng-show='item.canSwap')
+      i.fa.fa-lock.fa-2x(ng-click='canSwap(item)', ng-show='!item.canSwap')
+    i.fa.fa-exclamation-triangle.fa-2x(ng-show='item.pending.length > 0', ng-click='showPendingTrades(item)')
+    i.fa.fa-trash-o.fa-2x(ng-click='deleteItem(item)')
