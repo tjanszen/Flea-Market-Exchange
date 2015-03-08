@@ -1,29 +1,4 @@
-// img {
-//   height: 100px;
-//   border-radius: 50%;
-// }
-ul {
-  list-style-type: none;
-}
 
-// input {
-//   outline: none;
-// }
-//
-// button {
-//   outline: none;
-// }
-
-.itemCards {
-  border: 2px solid red;
-  margin: 2em;
-  text-align: center;
-}
-
-.itemName {
-  font-size: 1.2em;
-  font-weight: bold;
-}
 
 .user-item-img{
   max-height:100px;
@@ -32,6 +7,8 @@ ul {
   overflow: hidden;
 }
 
+
+/* Dashboard.jade */
 .home-row{
   height: 500px;
 }
@@ -46,6 +23,22 @@ ul {
   height:100%;
   border: 1px solid black;
   overflow: scroll;
+}
+
+
+/* Dashboard_list.jade */
+
+.ind-item-cards{
+}
+
+img.user-item-img {
+  width: 100%;
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+.ind-item-cards:hover img.user-item-img {
+
 }
 
 /* User Profile and Account Page */
@@ -73,15 +66,45 @@ ul {
   background-color: red;
 }
 
-@-webkit-keyframes shrink {
-  max-height: 0px;
+/* Login Page */
+.row#login{
+  color:#adadad;
 }
 
-keyframes shrink {
-  max-height: 0px;
+.panel-default>.panel-heading,
+.panel-default>.panel-body {
+  color:#adadad;
+  background-color: #4F4F4F;
+  border-color: #adadad;
 }
 
-.shrink {
-  transition: shrink 0.5s;
-  -webkit-transition: shrink 0.5s;
+.panel-default {
+border-color:  #adadad;
+}
+
+input.btn.btn-lg.btn-primary.btn-block {
+  color:#adadad;
+  background-color: #4F4F4F;
+  border-color: #adadad;
+}
+
+span.input-group-addon {
+  color:#adadad;
+  background-color: #4F4F4F;
+}
+
+#logout-btn {
+  background-color: #4F4F4F;
+  border: none;
+}
+
+.logoutbutton {
+  background: transparent;
+}
+.logoutbutton:hover {
+  color: red;
+}
+
+#logform * {
+  display: block;
 }

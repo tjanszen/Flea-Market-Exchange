@@ -1,24 +1,49 @@
-h1 {{url}}
-
-.col-xs-4
-  form(id='userForm')
-    .form-group(ng-show='url === "Register"')
-      label Name
-      input(type='text', name='name', ng-model="user.name", autofocus, required)
-    .form-group
-      label Email
-      input(type='email', name='email', ng-model="user.email", required)
-    .form-group(ng-show='url === "Register"')
-      label Picture
-      input(type='url', name='picture', ng-model="user.picture", required, placeholder="http://...")
-    .form-group(ng-show='url === "Register"')
-      label Password
-      input(type='password', name='password1' ng-model="user.password1", required)
-    .form-group(ng-show='url === "Register"')
-      label Confirm Password
-      input(type='password', name='password2', ng-model="user.password2", required)
-    .form-group(ng-show='url === "Login"')
-      label Password
-      input(type='password', name='password', ng-model="user.password")
-    .form-group
-      button.btn.btn-default(ng-click='submit(user)') {{url}}
+.row#login
+  .col-sm-6.col-md-4.col-md-offset-4
+    .panel.panel-default
+      .panel-heading.text-center
+        h3 Sign In
+      .panel-body
+        form#userForm
+          fieldset
+            .row
+              .col-sm-12.col-md-10.col-md-offset-1
+                .form-group(ng-show='url === "Register"')
+                  .input-group
+                    span.input-group-addon
+                      i.glyphicon.glyphicon-user
+                    input.form-control(type='text', name='name', ng-model="user.name", placeholder="Name", autofocus, required)
+                .form-group
+                  .input-group
+                    span.input-group-addon
+                      i.glyphicon.glyphicon-send
+                    input.form-control(type='email', name='email', ng-model="user.email", placeholder="Email" required)
+                .form-group(ng-show='url === "Register"')
+                  .input-group
+                    span.input-group-addon
+                      i.glyphicon.glyphicon-lock
+                    input.form-control(type='url', name='picture', ng-model="user.picture", required, placeholder="http://...")
+                .form-group(ng-show='url === "Register"')
+                  .input-group
+                    span.input-group-addon
+                      i.glyphicon.glyphicon-lock
+                    input.form-control(type='password', name='password1' ng-model="user.password1", placeholder="Password", required)
+                .form-group(ng-show='url === "Register"')
+                  .input-group
+                    span.input-group-addon
+                      i.glyphicon.glyphicon-lock
+                    input.form-control(type='password', name='password2', ng-model="user.password2", placeholder="Confirm Password", required)
+                .form-group(ng-show='url === "Login"')
+                  .input-group
+                    span.input-group-addon
+                      i.glyphicon.glyphicon-lock
+                    input.form-control(type='password', name='password', ng-model="user.password" placeholder="Password",)
+                .form-group
+                    button.btn.btn-lg.btn-primary.btn-block(ng-click='submit(user)') {{url}}
+                  
+                        
+                        
+                        
+                  
+                        
+                        
