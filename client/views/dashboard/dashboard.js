@@ -28,9 +28,10 @@ angular.module('eddie')
     $state.go('dashboard.new');
   };
 
-  $scope.swapItems = function() {
+  $scope.offerTrade = function() {
     Item.offerSwap($scope.swapArray).then(function(data) {
       console.log('swap data', data);
+      alert('Trade is pending');
     }, function() {
       console.log('ERROR OFFERING SWAP');
     });
@@ -90,6 +91,7 @@ angular.module('eddie')
   $scope.confirmTrade = function(item) {
     Item.makeTrade({requestersItem: item, confirmersItem: $rootScope.userPendingItem}).then(function(data) {
       console.log(data);
+      $state.go('dashboard.list');
     },
     function() {
       console.log('ERROR CONFRIMING TRADE');
@@ -104,4 +106,18 @@ angular.module('eddie')
       console.log('canSwap switched failed');
     });
   };
+
+  $scope.deleteItem = function(item) {
+    Item.destroy(item).then(function(data) {
+      $http.get('/items').success(function(data) {    // hmm, do I need this, maybe if you delete an item then try to offer a trade with it
+        $('#'+item._id).hide('0.5');
+      }).error(function(data) {
+        console.log('page update failed', data);
+      });
+    },
+    function() {
+      console.log('Deletion of item failed');
+    });
+  };
+
 }]);

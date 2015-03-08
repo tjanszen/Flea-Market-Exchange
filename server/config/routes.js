@@ -11,5 +11,6 @@ module.exports = [
   {method: 'get', path: '/items', config: require('../routes/items/index')},
   {method: 'post', path: '/swaps', config: require('../routes/items/swaps')},
   {method: 'post', path: '/trade', config: require('../routes/items/trade')},
-  {method: 'post', path: '/toggle-item', config: require('../routes/items/toggle-item')}
+  {method: 'post', path: '/toggle-item', config: require('../routes/items/toggle-item')},
+  {method: 'delete', path: '/delete/{itemId}', config: require('../routes/items/destroy')}
 ];

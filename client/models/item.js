@@ -19,5 +19,9 @@ angular.module('eddie')
     return $http.post('/toggle-item', item);
   }
 
-  return {create: create, offerSwap: offerSwap, makeTrade: makeTrade, switchSwap: switchSwap};
+  function destroy(item) {
+    return $http.delete('/delete/'+item._id);
+  }
+
+  return {create: create, offerSwap: offerSwap, makeTrade: makeTrade, switchSwap: switchSwap, destroy: destroy};
 }]);

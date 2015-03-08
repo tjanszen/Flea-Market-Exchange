@@ -10,7 +10,7 @@ button.btn.btn-default(type='button', ng-click='addItem()'): i.fa.fa-plus
 .row.user-items-row(ng-repeat='item in userItems | filter: user._id', id='{{item._id}}')
   .col-xs-4
     img.user-item-img(src='{{item.image}}')
-  .col-xs-8
+  .col-xs-7
     ul 
       li.itemName {{item.name}}
       li Year: {{item.year}}
@@ -18,5 +18,6 @@ button.btn.btn-default(type='button', ng-click='addItem()'): i.fa.fa-plus
     .toggle-canSwap
       button.btn.btn-default(ng-click='canSwap(item)', ng-show='item.canSwap') Unlocked
       button.btn.btn-default(ng-click='canSwap(item)', ng-show='!item.canSwap') Locked
-  
-    button.btn.btn-default(ng-show='item.pending.length > 0', ng-click='showPendingTrades(item)') Pending Trades
+    button.btn.btn-default(ng-show='item.pending.length > 0', ng-click='showPendingTrades(item)') Pending 
+    Trades
+    button.btn.btn-danger(ng-click='deleteItem(item)') x
