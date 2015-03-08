@@ -10,109 +10,114 @@ module.exports = {
   handler: function(request, reply) {
 
 
-      var confirmersItem = request.payload.confirmersItem;
-      var requestersItem = request.payload.requestersItem;
+    var confirmersItem = request.payload.confirmersItem;
+    var requestersItem = request.payload.requestersItem;
 
-      console.log('confirmersItem', confirmersItem);
-      console.log('requestersItem', requestersItem);
 
-      async.each(requestersItem.pending, function(pendingId, callback) {
-        console.log('pendingId', pendingId);
-        console.log('confirmersItemId', confirmersItem._id);
-        if(pendingId !== confirmersItem._id) {
-          Item.findById(pendingId, function(err, item) {
-            var index = item.pending.indexOf(requestersItem._id);
-            console.log('index:', index); // 0
-            console.log('item.pending', item.pending); // array of 2
-            item.pending.splice(index, 1);
-            console.log('item.pending', item.pending); // array of 0
-            // item.save(function(err) {
-            //   if (err) {
-                // console.log('ERROR SAVING item from requestersItems pending array');
-              // } else {
-                index = requestersItem.pending.indexOf(item._id);
-                console.log('index 2: ', index);  // 1
-                console.log('requestersItem.pending: ', requestersItem.pending); // array of 2
-                requestersItem.pending.splice(index, 1);
-                console.log('requestersItem.pending: ', requestersItem.pending);  // array of 1 (a2)
-                // requestersItem.save(function(err) {
-                //   if(err){
-                //     console.log('ERROR SAVING requestersItem item');
-                //   } else{
-                    async.each(confirmersItem.pending, function(confirmersPendingId, callback2){
-                      if(confirmersPendingId !== requestersItem._id) {
-                        Item.findById(confirmersPendingId, function(err, item2) {
-                          index = item2.pending.indexOf(confirmersItem._id);
-                          console.log('index:', index); // 0
-                          console.log('item2.confirmer', item2.pending); // array of 2
-                          item2.pending.splice(index, 1);
-                          console.log('item2.pending', item.pending); // array of 0
-                          // item2.save(function(err){
-                          //   if (err) {
-                          //       console.log('ERROR SAVING item2 from confirmersItems pending array');
-                              // } else {
-                                index = confirmersItem.pending.indexOf(item2._id);
-                                confirmersItem.pending.splice(index, 1);
-                                // confirmersItem.save(function(err) {
-                                //   if(err){
-                                //     console.log('ERROR SAVING confrimersItem item');
-                                //   } else{
-                                    var tempId = confirmersItem.userId;
-                                    confirmersItem.userId = requestersItem.userId;
-                                    requestersItem.userId = tempId;
-                                    // confirmersItem.save(function(err) {
-                                    //   if(err) {
-                                    //     console.log('ERR SAVING CONFIRMERS-ITEM USERID');
-                                    //   }
-                                    //   else{
-                                    //     requestersItems.save(function(err) {
-                                    //       if(err){
-                                    //         console.log('ERR SAVING REQUESTERS-ITEM USERID');
-                                    //       }else{
-                                          // }
-                                        // });
-                                      // }
-                                    // });
-                                  // }
-                                // });
-                              // }
-                          // });
+    Item.findById(requestersItem._id, function(err, requestersItem) {
+      Item.findById(confirmersItem._id, function(err, confirmersItem) {
+
+    async.each(requestersItem.pending, function(pendingId, callback) {
+      // console.log('pendingId', pendingId);
+      // console.log('confirmersItemId', confirmersItem._id);
+      if(pendingId !== confirmersItem._id) {
+        Item.findById(pendingId, function(err, item) {
+          var index = item.pending.indexOf(requestersItem._id);
+          console.log('index:', index); // 0
+          console.log('item.pending', item.pending); // array of 2
+          item.pending.splice(index, 1);
+          console.log('item.pending', item.pending); // array of 0
+          item.save(function(err) {
+            if (err) {
+              console.log('ERROR SAVING item from requestersItems pending array');
+            } else {
+              // console.log('BBBRRREEEAAAKKKKK');
+              // reply();
+              index = requestersItem.pending.indexOf(item._id);
+              console.log('index 2: ', index);  // 1
+              console.log('requestersItem.pending: ', requestersItem.pending); // array of 2
+              requestersItem.pending.splice(index, 1);
+              console.log('requestersItem.pending: ', requestersItem.pending);  // array of 1 (a2)
+              requestersItem.save(function(err) {
+                if(err){
+                  console.log('ERROR SAVING requestersItem item');
+                } else{
+                  async.each(confirmersItem.pending, function(confirmersPendingId, callback2){
+                    if(confirmersPendingId !== requestersItem._id) {
+                      Item.findById(confirmersPendingId, function(err, item2) {
+                        index = item2.pending.indexOf(confirmersItem._id);
+                        console.log('index:', index); // 0
+                        console.log('item2.confirmer', item2.pending); // array of 2
+                        item2.pending.splice(index, 1);
+                        console.log('item2.pending', item2.pending); // array of 0
+                        item2.save(function(err){
+                          if (err) {
+                            console.log('ERROR SAVING item2 from confirmersItems pending array');
+                          } else {
+                            index = confirmersItem.pending.indexOf(item2._id);
+                            confirmersItem.pending.splice(index, 1);
+                            console.log(confirmersItem);
+                            confirmersItem.save(function(err) {             //========================
+                              if(err){
+                                console.log('ERROR SAVING confirmersItem item');
+                              } else {
+                                var tempId = confirmersItem.userId;
+                                confirmersItem.userId = requestersItem.userId;
+                                requestersItem.userId = tempId;
+                                confirmersItem.save(function(err) {
+                                  if(err) {
+                                    console.log('ERR SAVING CONFIRMERS-ITEM USERID');
+                                  }
+                                  else {
+                                    requestersItem.save(function(err) {
+                                      if(err) {
+                                        console.log('ERR SAVING REQUESTERS-ITEM USERID');
+                                      } else {
+                                        console.log('HIT THE DEEP END OF THE WELL');
+                                      }
+                                    });
+                                  }
+                                });
+                              }
+                            });
+                          }
                         });
-                      }
-
-                      callback2();
-                    },
-                    function(err) {
-                      if(err){
-                        console.log('TRADE GOT ALL MESSED UP 2');
-                      } else{
-                        console.log('ASYNCED THE SWAP 2');
-                      }
-                    });
-                  // }
-                // });
-              // }
-            // });
+                      });
+                    }
+                    callback2();
+                  },
+                  function(err) {
+                    if(err){
+                      console.log('TRADE GOT ALL MESSED UP 2');
+                    } else{
+                      console.log('ASYNCED THE SWAP 2');
+                    }
+                  });
+                }
+              });
+            }
           });
-        }
-        callback();
-      },
-      function(err) {
-        if(err){
-          console.log('TRADE GOT ALL MESSED UP');
-        } else{
-          console.log('ASYNCED THE SWAP');
-          User.findById(confirmersItem.userId, function(err, confirmer) {
-            User.findById(requestersItem.userId, function(err, requester){
-              sendEmail(confirmer, requester);
-              sendEmail(requester, confirmer);
-            });
+        });
+      }
+      callback();
+    },
+    function(err) {
+      if(err){
+        console.log('TRADE GOT ALL MESSED UP');
+          reply().code(500);
+      } else{
+        console.log('ASYNCED THE SWAP');
+        User.findById(confirmersItem.userId, function(err, confirmer) {
+          User.findById(requestersItem.userId, function(err, requester){
+            sendEmail(confirmer, requester);
+            sendEmail(requester, confirmer);
           });
-          reply();
-        }
-      });
-
-
+        });
+        reply();
+      }
+    });
+  });
+});
   }
 };
 
