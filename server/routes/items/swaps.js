@@ -15,7 +15,7 @@ module.exports = {
         item.pending.push(o.otherItem);
 
         item.save(function(err) {
-          if(err){
+          if(err) {
             console.log('err', err);
           } else {
             User.findById(item.userId, function(err, user) {
@@ -23,8 +23,8 @@ module.exports = {
 
               Item.findById(o.otherItem, function(err, item) {
                 item.pending.push(o.yourItem);
-                item.save(function(err){
-                  if(err){
+                item.save(function(err) {
+                  if(err) {
                     console.log('ERR');
                   } else {
                     User.findById(item.userId, function(err, user) {

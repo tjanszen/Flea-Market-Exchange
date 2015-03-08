@@ -22,10 +22,7 @@ module.exports = {
           Item.findById(pendingId, function(err, item) {
             if(pendingId !== confirmersItem._id) {
                 index = item.pending.indexOf(requestersItem._id);
-                console.log('index:', index); // 0
-                console.log('item.pending', item.pending); // array of 2
                 item.pending.splice(index, 1);
-                console.log('item.pending', item.pending); // array of 0
                 item.save(function(err) {
                   if (err) {
                     console.log('ERROR SAVING item from requestersItems pending array');
@@ -35,14 +32,11 @@ module.exports = {
                 });
             } else {
               index = requestersItem.pending.indexOf(item._id);
-              console.log('index 2: ', index);  // 1
-              console.log('requestersItem.pending: ', requestersItem.pending); // array of 2
               requestersItem.pending.splice(index, 1);
-              console.log('requestersItem.pending: ', requestersItem.pending);  // array of 1 (a2)
               requestersItem.save(function(err) {
-                if(err){
+                if(err) {
                   console.log('ERROR SAVING requestersItem item');
-                } else{
+                } else {
                   console.log('SAVED THE REQUESTER ITEM');
                 }
               });
@@ -51,7 +45,7 @@ module.exports = {
           callback();
         },
         function(err) {
-          if(err) {
+          if (err) {
             console.log('TRADE GOT ALL MESSED UP 2');
           } else {
             console.log('ASYNCED THE REQUESTERITEM');
@@ -60,11 +54,8 @@ module.exports = {
               Item.findById(confirmersPendingId, function(err, item2) {
                 if(confirmersPendingId !== requestersItem._id) {
                     index = item2.pending.indexOf(confirmersItem._id);
-                    console.log('index:', index); // 0
-                    console.log('item2.confirmer', item2.pending); // array of 2
                     item2.pending.splice(index, 1);
-                    console.log('item2.pending', item2.pending); // array of 0
-                    item2.save(function(err){
+                    item2.save(function(err) {
                       if (err) {
                         console.log('ERROR SAVING item2 from confirmersItems pending array');
                       } else {
@@ -74,9 +65,8 @@ module.exports = {
                 } else {
                   index = confirmersItem.pending.indexOf(item2._id);
                   confirmersItem.pending.splice(index, 1);
-                  console.log(confirmersItem);
-                  confirmersItem.save(function(err) {             //========================
-                    if(err){
+                  confirmersItem.save(function(err) {
+                    if (err) {
                       console.log('ERROR SAVING confirmersItem item');
                     } else {
                       console.log('SAVED THE CONFIMERITEM');
@@ -87,9 +77,9 @@ module.exports = {
               callback2();
             },
             function(err) {
-              if(err){
+              if (err) {
                 console.log('TRADE GOT ALL MESSED UP 2');
-              } else{
+              } else {
                 console.log('ASYNCED THE REQUESTERITEM');
 
                 var tempId = confirmersItem.userId;
@@ -98,8 +88,7 @@ module.exports = {
                 confirmersItem.save(function(err) {
                   if(err) {
                     console.log('ERR SAVING CONFIRMERS-ITEM USERID');
-                  }
-                  else {
+                  } else {
                     requestersItem.save(function(err) {
                       if(err) {
                         console.log('ERR SAVING REQUESTERS-ITEM USERID');
@@ -107,7 +96,7 @@ module.exports = {
                         console.log('HIT THE DEEP END OF THE WELL');
 
                         User.findById(confirmersItem.userId, function(err, confirmer) {
-                          User.findById(requestersItem.userId, function(err, requester){
+                          User.findById(requestersItem.userId, function(err, requester) {
                             sendEmail(confirmer, requester);
                             sendEmail(requester, confirmer);
                           });
@@ -136,8 +125,8 @@ function sendEmail(sender, receiver) {
           subject: 'You have traded some shit',
           text: 'Check your account to make sure it did not get fucked up'
       }
-  }, function(error, response)
-  {
+  },
+  function(error, response) {
       //uh oh, there was an error
       if (error) {
         console.log( JSON.stringify(error) );

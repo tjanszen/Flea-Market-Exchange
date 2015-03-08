@@ -16,7 +16,7 @@ module.exports = {
   handler: function(request, reply) {
     request.payload.userId = request.auth.credentials._id;
     var item = new Item(request.payload);
-    item.save(function(){
+    item.save(function() {
       reply({item:item}).code(200);
     });
   }

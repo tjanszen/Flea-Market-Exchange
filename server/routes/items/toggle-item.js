@@ -10,10 +10,10 @@ module.exports = {
         reply().code(500);
       }else{
         item.canSwap = !item.canSwap;
-        item.save(function(err){
-          if(err){
-            console.log('ERROR SAVING CANSWAP ITEM')
-          }else{
+        item.save(function(err) {
+          if(err) {
+            console.log('ERROR SAVING CANSWAP ITEM');
+          } else {
             reply();
           }
         });

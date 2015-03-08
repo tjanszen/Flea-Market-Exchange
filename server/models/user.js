@@ -13,7 +13,7 @@ var userSchema = mongoose.Schema({
   createdAt: {type: Date, default: Date.now, required: true}
 });
 
-userSchema.statics.register = function(o, cb){
+userSchema.statics.register = function(o, cb) {
   User.findOne({email: o.email}, function(err, user) {
     if(user) { return cb(true); }
     user = new User(o);
