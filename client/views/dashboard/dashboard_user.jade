@@ -13,7 +13,7 @@
     h4.item-title {{item.name}}
     h5.item-year Year: {{item.year}}
     h5.item-cost $ {{item.cost}}
-    h5(ng-repeat='t in item1.tags') Tags: {{t}}
+    span(ng-repeat='t in item1.tags') # {{t}}
     .toggle-canSwap
       i.fa.fa-unlock.fa-2x(ng-click='canSwap(item)', ng-show='item.canSwap')
       i.fa.fa-lock.fa-2x(ng-click='canSwap(item)', ng-show='!item.canSwap')
