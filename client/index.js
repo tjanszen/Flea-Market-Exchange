@@ -4,7 +4,7 @@ angular.module('eddie', ['ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/dashboard/list');
+  $urlRouterProvider.otherwise('/login');
 
   $stateProvider
   .state('login', {
