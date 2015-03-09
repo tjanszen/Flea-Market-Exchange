@@ -3,6 +3,10 @@
 angular.module('eddie')
 
 .controller('UserCtrl', ['$scope', '$rootScope', '$state', 'User', function($scope, $rootScope, $state, User) {
+  User.status().then(function(response) {
+    $state.go('dashboard.list');
+  });
+
   $scope.url = _.capitalize($state.current.name);
 
   document.getElementById('userForm').reset();

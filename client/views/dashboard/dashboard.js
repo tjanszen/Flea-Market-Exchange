@@ -4,6 +4,18 @@ angular.module('eddie')
 
 .controller('DashCtrl', ['$scope', '$rootScope', 'User', 'Item', '$state', '$location', '$http', function($scope, $rootScope, User, Item, $state, $location, $http) {
 
+
+  User.status().then(function(response) {},
+  function(response) {
+    $state.go('login');
+  });
+
+  // $http.get('/status').success(function(data, status, headers, config) {
+  //   console.log('status data', data);
+  // }).error(function(data, status, headers, config) {
+  //   $state.go('login');
+  // });
+
   // if ($rootScope.userPendingItem)
   //   console.log('params', $rootScope.userPendingItem);
 
@@ -20,7 +32,7 @@ angular.module('eddie')
     // console.log('IDSSSSSS', $scope.userItemIds);
     // console.log($scope.userItems);
   }).error(function(data) {
-    console.log('USER ID GET FUCKED', data);
+    console.log("COULDN'T GET USER ID", data);
   });
 
 

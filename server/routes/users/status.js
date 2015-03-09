@@ -2,6 +2,9 @@
 
 module.exports = {
   handler: function(request, reply) {
-    reply({email: request.auth.credentials.email, user: request.auth.credentials});
+    if (request.auth.credentials)
+      reply({email: request.auth.credentials.email, user: request.auth.credentials});
+    else 
+      reply();
   }
 };
