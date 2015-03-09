@@ -10,27 +10,10 @@ angular.module('eddie')
     $state.go('login');
   });
 
-  // $http.get('/status').success(function(data, status, headers, config) {
-  //   console.log('status data', data);
-  // }).error(function(data, status, headers, config) {
-  //   $state.go('login');
-  // });
-
-  // if ($rootScope.userPendingItem)
-  //   console.log('params', $rootScope.userPendingItem);
-
   $scope.swapArray = [];
-  // $scope.userItemIds = [];
 
   $http.get('/items').success(function(data) {
     $scope.userItems = data.items;    // USER ITEMS ARE ALL ITEMS IN THE DATABASE
-    // $scope.userItems.forEach(function(dbItem) {
-    //   if (dbItem.userId === $rootScope.user._id) {
-    //     $scope.userItemIds.push(dbItem._id);
-    //   }
-    // });
-    // console.log('IDSSSSSS', $scope.userItemIds);
-    // console.log($scope.userItems);
   }).error(function(data) {
     console.log("COULDN'T GET USER ID", data);
   });
@@ -94,10 +77,6 @@ angular.module('eddie')
 
     $state.go('dashboard.approve');
     $rootScope.userPendingItem = item;
-    // $scope.userItemIds.forEach(function(id) {
-    //   $('#' + id).css('background-color', 'white');
-    // });
-    // $("#" + item._id).css('background-color', 'yellow');
   };
 
   $scope.confirmTrade = function(item) {
