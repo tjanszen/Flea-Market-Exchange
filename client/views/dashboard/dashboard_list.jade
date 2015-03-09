@@ -1,5 +1,5 @@
 .row.text-center
-  button.btn.btn-primary.col-md-2.col-md-offset-5(type='button' ng-click='offerTrade()') Offer Trades
+  button.btn.btn-primary.col-md-2.col-md-offset-5#trade-btn(type='button' ng-click='offerTrade()') Offer Trades
 .row
   .col-xs-6.ind-item-cards(ng-repeat='item1 in userItems | filter: { userId: "!"+user._id, canSwap: true}')
     .col-xs-offset-3
@@ -11,7 +11,7 @@
           h4.item-title {{item1.name}}
           h5.item-year Year: {{item1.year}}
           h5.item-cost $ {{item1.cost}}
-          h5(ng-repeat='t in item1.tags') Tags: {{t}}
+          span(ng-repeat='t in item1.tags') {{t}} 
           select.form-control(name='swapItem', ng-model='selectedSwap' ng-change='swapChosen(selectedSwap, item1._id)')
             option(value='') Swap Item
             option(value='{{item2._id}}' ng-repeat='item2 in userItems | filter: user._id') {{item2.name}}

@@ -19,14 +19,5 @@ describe('users', function() {
     });
   });
 
-  describe('get /register', function() {
-    it('should display the registration page', function(done) {
-      var options = {method:'get', url:'/register'};
-      server.inject(options, function(response) {
-        expect(response.statusCode).to.equal(200);
-        expect(response.payload).to.include('Register');
-        done();
-      });
-    });
-  });
+  
 });

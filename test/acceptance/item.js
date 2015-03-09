@@ -21,7 +21,7 @@ describe('items', function() {
         method:'post',
         url:'/users/authenticate',
         payload:{
-          email:'bob@aol.com',
+          email:'tommy.janszen@gmail.com',
           password:'123'
         }
       };
@@ -31,22 +31,19 @@ describe('items', function() {
       });
     });
   });
-
-  describe('get /items/new', function() {
-    it('should display the new item page', function(done) {
-      var options = {
-        method:'get',
-        url:'/items/new',
-        headers: {
-          cookie: cookie
-        }
-      };
-      server.inject(options, function(response) {
-        expect(response.statusCode).to.equal(200);
-        expect(response.payload).to.include('Add');
-        done();
-      });
-    });
-  });
-
+  describe('get /items', function() {
+     it('should display all items', function(done) {
+       var options = {
+         method: 'get',
+         url:'/items',
+         headers: {
+           cookie: cookie
+         }
+       };
+       server.inject(options, function(response) {
+         expect(response.statusCode).to.equal(200);
+         done();
+       });
+     });
+   });
 });
