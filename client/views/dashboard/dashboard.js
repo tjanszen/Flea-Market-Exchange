@@ -27,6 +27,7 @@ angular.module('eddie')
     Item.offerSwap($scope.swapArray).then(function(data) {
       console.log('swap data', data);
       alert('Trade is pending');
+      window.location.reload(true);
     }, function() {
       console.log('ERROR OFFERING SWAP');
     });
